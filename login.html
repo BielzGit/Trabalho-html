@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Brasa Burger</title>
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="cadastro-box">
+            <img src="Imagens/logo.png" alt="Logo Brasa Burger">
+            <h1>Entrar</h1>
+            <p class="subtitulo">
+                Faça login para acompanhar seus pedidos e aproveitar nossas promoções.
+            </p>
+<form onsubmit="loginSucesso(); return false;">
+    <input type="email" name="email" placeholder="E-mail" required>
+    <input type="password" name="senha" placeholder="Senha" required>
+    <input type="submit" value="Entrar">
+</form>
+            <p class="login">
+                Não possui uma conta?
+                <a href="cadastro.html">Cadastre-se</a>
+            </p>
+        </div>
+    </div>
+<script>
+function loginSucesso() {
+    localStorage.setItem("usuarioLogado", "true");
+
+    alert("Login concluído!");
+
+    const volta = localStorage.getItem("ultimaPagina");
+
+    if (volta && volta !== "login.html") {
+        localStorage.removeItem("ultimaPagina");
+        window.location.href = volta;
+    } else {
+        window.location.href = "inicio.html";
+    }
+}
+</script>
+</body>
+</html>

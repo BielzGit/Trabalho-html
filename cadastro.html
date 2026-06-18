@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Brasa Burger</title>
+    <link rel="stylesheet" href="CSS/cadastro.css">
+</head>
+<body>
+    <div class="container">
+        <div class="cadastro-box">
+            <img src="Imagens/logo.png" alt="Logo Brasa Burger">
+            <h1>Cadastro</h1>
+            <p class="subtitulo">Crie sua conta e receba seus pedidos onde estiver.</p>
+           <form onsubmit="loginSucesso(); return false;">
+    <input type="text" name="nome" placeholder="Nome Completo" required>
+    <input type="email" name="email" placeholder="E-mail" required>
+    <input type="tel" name="telefone" placeholder="Telefone" required>
+
+    <h3>Endereço de Entrega</h3>
+
+    <input type="text" name="cep" placeholder="CEP" required>
+    <input type="text" name="rua" placeholder="Rua" required>
+
+    <div class="linha">
+        <input type="text" name="numero" placeholder="Número" required>
+        <input type="text" name="complemento" placeholder="Complemento">
+    </div>
+
+    <input type="text" name="bairro" placeholder="Bairro" required>
+
+    <div class="linha">
+        <input type="text" name="cidade" placeholder="Cidade" required>
+        <input type="text" name="estado" placeholder="Estado" required>
+    </div>
+
+    <input type="password" name="senha" placeholder="Senha" required>
+    <input type="password" name="confirmar" placeholder="Confirmar Senha" required>
+
+    <input type="submit" value="Cadastrar">
+           </form>
+            <p class="login">
+                Já possui uma conta?
+                <a href="login.html">Entrar</a>
+            </p>
+        </div>
+    </div>
+<script>
+function loginSucesso() {
+    localStorage.setItem("usuarioLogado", "true");
+
+    alert("Cadastro concluído!");
+
+    const volta = localStorage.getItem("ultimaPagina");
+
+    if (volta && volta !== "login.html") {
+        localStorage.removeItem("ultimaPagina");
+        window.location.href = volta;
+    } else {
+        window.location.href = "inicio.html";
+    }
+}
+</script>    
+</body>
+</html>
